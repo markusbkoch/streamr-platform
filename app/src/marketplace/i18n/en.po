@@ -201,6 +201,9 @@ msgstr "Ethereum identity"
 msgid "editProductPage##navigation##sharedSecrets"
 msgstr "Shared secrets"
 
+msgid "editProductPage##navigation##whitelist"
+msgstr "Whitelist"
+
 msgid "editProductPage##sidebar##category"
 msgstr "Product category"
 
@@ -209,6 +212,15 @@ msgstr "Active subscribers"
 
 msgid "editProductPage##sidebar##mostRecentPurchase"
 msgstr "Most recent purchase"
+
+msgid "editProductPage##whitelist##title"
+msgstr "Limit product access"
+
+msgid "editProductPage##whitelist##description"
+msgstr ""
+"If you want to restrict sales of your product to approved buyers, you can enable whitelisting. "
+"Only buyers whose Ethereum addresses have been whitelisted will be able to subscribe to your product. "
+"Other buyers will be able to ask for access."
 
 msgid "error##general"
 msgstr "Oops. Something has broken down here."
