@@ -147,7 +147,7 @@ const EditorNav = () => {
         }, {
             id: 'whitelist',
             heading: I18n.t('editProductPage.navigation.whitelist'),
-            status: getStatus('whitelist'),
+            status: getStatus('requiresWhitelist'),
         }]
 
         if (isDataUnion) {

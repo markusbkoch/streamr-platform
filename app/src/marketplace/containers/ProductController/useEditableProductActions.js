@@ -79,6 +79,13 @@ export function useEditableProductActions() {
         touch('adminFee')
         touch('details')
     }, [commit, touch])
+    const updateRequiresWhitelist = useCallback((requiresWhitelist: boolean) => {
+        commit('Update whitelist enabled', (p) => ({
+            ...p,
+            requiresWhitelist,
+        }))
+        touch('requiresWhitelist')
+    }, [commit, touch])
     const updateIsFree = useCallback((isFree: $ElementType<Product, 'isFree'>) => {
         commit('Update is free', (p) => {
             // Switching product from free to paid also changes its price from 0 (only
@@ -133,6 +140,7 @@ export function useEditableProductActions() {
         updateStreams,
         updateCategory,
         updateAdminFee,
+        updateRequiresWhitelist,
         updateIsFree,
         updatePrice,
         updateBeneficiaryAddress,
@@ -147,6 +155,7 @@ export function useEditableProductActions() {
         updateStreams,
         updateCategory,
         updateAdminFee,
+        updateRequiresWhitelist,
         updateIsFree,
         updatePrice,
         updateBeneficiaryAddress,

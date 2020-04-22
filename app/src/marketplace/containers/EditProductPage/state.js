@@ -18,6 +18,7 @@ export const PENDING_CHANGE_FIELDS = [
     'adminFee',
     'timeUnit',
     'price',
+    'requiresWhitelist',
 ]
 
 export function isPublished(product: Product) {

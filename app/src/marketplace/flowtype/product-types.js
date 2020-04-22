@@ -13,7 +13,8 @@ export type ProductState = $Keys<typeof productStates>
 export type ProductType = $Values<typeof productTypes>
 
 export type PendingChanges = {
-    adminFee?: number
+    adminFee?: number,
+    requiresWhitelist?: boolean,
 }
 
 export type Product = {
@@ -42,6 +43,7 @@ export type Product = {
     price?: NumberString,
     isFree?: boolean,
     type?: ProductType,
+    requiresWhitelist?: boolean,
     pendingChanges?: PendingChanges,
 }
 
@@ -70,6 +72,7 @@ export type SmartContractProduct = {
     priceCurrency: $ElementType<Product, 'priceCurrency'>,
     minimumSubscriptionInSeconds: $ElementType<Product, 'minimumSubscriptionInSeconds'>,
     state: $ElementType<Product, 'state'>,
+    requiresWhitelist: $ElementType<Product, 'requiresWhitelist'>,
 }
 
 export type Subscription = {

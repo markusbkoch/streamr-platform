@@ -14,6 +14,7 @@ export const actionsTypes = {
     PUBLISH_FREE: 'publishFree',
     UNPUBLISH_FREE: 'unpublishFree',
     PUBLISH_PENDING_CHANGES: 'publishPendingChanges',
+    SET_REQUIRES_WHITELIST: 'setRequiresWhitelist',
 }
 
 export type PublishAction = {
