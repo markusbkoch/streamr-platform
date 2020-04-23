@@ -58,6 +58,13 @@ export function getPendingChanges(product: Product): Object {
         }
     }
 
+    if (!isPublic) {
+        const { requiresWhitelist } = getPendingObject(product.pendingChanges || {})
+        return {
+            requiresWhitelist,
+        }
+    }
+
     return {}
 }
 
@@ -69,9 +76,10 @@ export function hasPendingChange(product: Product, field: string) {
 
 export function update(product: Product, fn: Function) {
     const result = fn(product)
-    const { adminFee, ...otherChanges } = result
+    const { adminFee, requiresWhitelist, ...otherChanges } = result
+    const isPublic = isPublished(product)
 
-    if (isPublished(product)) {
+    if (isPublic) {
         return {
             ...product,
             pendingChanges: {
@@ -83,6 +91,13 @@ export function update(product: Product, fn: Function) {
             ...otherChanges,
             pendingChanges: {
                 adminFee,
+            },
+        }
+    } else if (!isPublic) {
+        return {
+            ...otherChanges,
+            pendingChanges: {
+                requiresWhitelist,
             },
         }
     }
