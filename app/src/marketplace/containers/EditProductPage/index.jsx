@@ -34,6 +34,7 @@ import ConfirmSaveModal from './ConfirmSaveModal'
 import DeployDataUnionModal from './DeployDataUnionModal'
 import PublishModal from './PublishModal'
 import CropImageModal from './CropImageModal'
+import { WhitelistAddModal } from './WhitelistModals'
 
 import styles from './editProductPage.pcss'
 
@@ -220,6 +221,7 @@ const EditProductPage = ({ product }: { product: Product }) => {
             <DeployDataUnionModal />
             <PublishModal />
             <CropImageModal />
+            <WhitelistAddModal />
         </CoreLayout>
     )
 }
