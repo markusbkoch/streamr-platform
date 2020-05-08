@@ -28,6 +28,7 @@ const Hero = () => {
     const dispatch = useDispatch()
     const product = useProduct()
     const { api: purchaseDialog } = useModal('purchase')
+    const { api: requestAccessDialog } = useModal('requestWhitelistAccess')
 
     const userData = useSelector(selectUserData)
     const isLoggedIn = userData !== null
@@ -39,9 +40,15 @@ const Hero = () => {
 
     const productId = product.id
     const isPaid = isPaidProduct(product)
+    const isWhitelistEnabled = product.requiresWhitelist
+
     const onPurchase = useCallback(async () => {
         if (isLoggedIn) {
             if (isPaid) {
+                if (isWhitelistEnabled && !isWhitelisted) {
+                    await requestAccessDialog.open()
+                    return
+                }
                 // Paid product has to be bought with Metamask
                 await purchaseDialog.open({
                     productId,
@@ -57,18 +64,18 @@ const Hero = () => {
                 }),
             })))
         }
-    }, [productId, dispatch, isLoggedIn, purchaseDialog, isPaid])
+    }, [productId, dispatch, isLoggedIn, purchaseDialog, isPaid, isWhitelistEnabled, isWhitelisted, requestAccessDialog])
 
     useEffect(() => {
         const loadWhitelistStatus = async () => {
-            if (productId && account) {
+            if (isWhitelistEnabled && productId && account) {
                 const whitelisted = await isAddressWhitelisted(productId, account)
                 setIsWhitelisted(whitelisted)
             }
         }
 
         loadWhitelistStatus()
-    }, [productId, account])
+    }, [productId, account, isWhitelistEnabled])
 
     return (
         <HeroComponent

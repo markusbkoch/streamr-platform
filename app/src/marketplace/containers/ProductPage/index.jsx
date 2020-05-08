@@ -14,6 +14,7 @@ import usePending from '$shared/hooks/usePending'
 
 import { getProductSubscription } from '$mp/modules/product/actions'
 import LoadingIndicator from '$shared/components/LoadingIndicator'
+import { WhitelistRequestAccessModal } from '$mp/containers/EditProductPage/WhitelistModals'
 
 import PurchaseModal from './PurchaseModal'
 import useProduct from '$mp/containers/ProductController/useProduct'
@@ -72,6 +73,7 @@ const ProductPage = () => {
             <Helmet title={`${product.name} | ${I18n.t('general.title.suffix')}`} />
             <Page />
             <PurchaseModal />
+            <WhitelistRequestAccessModal />
         </Layout>
     )
 }
