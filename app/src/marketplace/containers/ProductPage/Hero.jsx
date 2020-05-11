@@ -39,6 +39,7 @@ const Hero = () => {
     const [isWhitelisted, setIsWhitelisted] = useState(null)
 
     const productId = product.id
+    const productContact = product.contact
     const isPaid = isPaidProduct(product)
     const isWhitelistEnabled = product.requiresWhitelist
 
@@ -46,7 +47,9 @@ const Hero = () => {
         if (isLoggedIn) {
             if (isPaid) {
                 if (isWhitelistEnabled && !isWhitelisted) {
-                    await requestAccessDialog.open()
+                    await requestAccessDialog.open({
+                        contactAddress: productContact,
+                    })
                     return
                 }
                 // Paid product has to be bought with Metamask
@@ -64,7 +67,7 @@ const Hero = () => {
                 }),
             })))
         }
-    }, [productId, dispatch, isLoggedIn, purchaseDialog, isPaid, isWhitelistEnabled, isWhitelisted, requestAccessDialog])
+    }, [productId, dispatch, isLoggedIn, purchaseDialog, isPaid, isWhitelistEnabled, isWhitelisted, requestAccessDialog, productContact])
 
     useEffect(() => {
         const loadWhitelistStatus = async () => {
