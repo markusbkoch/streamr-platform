@@ -39,7 +39,7 @@ const Hero = () => {
     const [isWhitelisted, setIsWhitelisted] = useState(null)
 
     const productId = product.id
-    const productContact = product.contact
+    const contactEmail = product.contact.email
     const isPaid = isPaidProduct(product)
     const isWhitelistEnabled = product.requiresWhitelist
 
@@ -48,7 +48,7 @@ const Hero = () => {
             if (isPaid) {
                 if (isWhitelistEnabled && !isWhitelisted) {
                     await requestAccessDialog.open({
-                        contactAddress: productContact,
+                        contactEmail,
                     })
                     return
                 }
@@ -67,7 +67,7 @@ const Hero = () => {
                 }),
             })))
         }
-    }, [productId, dispatch, isLoggedIn, purchaseDialog, isPaid, isWhitelistEnabled, isWhitelisted, requestAccessDialog, productContact])
+    }, [productId, dispatch, isLoggedIn, purchaseDialog, isPaid, isWhitelistEnabled, isWhitelisted, requestAccessDialog, contactEmail])
 
     useEffect(() => {
         const loadWhitelistStatus = async () => {
