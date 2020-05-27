@@ -4,8 +4,8 @@ import React from 'react'
 import cx from 'classnames'
 
 import DetailsContainer from '$shared/components/Container/Details'
-import useProduct from '../ProductController/useProduct'
-import { isDataUnionProduct } from '$mp/utils/product'
+import useEditableProduct from '../ProductController/useEditableProduct'
+import { isDataUnionProduct, isPaidProduct } from '$mp/utils/product'
 
 import EditorNav from './EditorNav'
 import ProductName from './ProductName'
@@ -25,8 +25,9 @@ type Props = {
 }
 
 const Editor = ({ disabled }: Props) => {
-    const product = useProduct()
+    const product = useEditableProduct()
     const isDataUnion = isDataUnionProduct(product)
+    const isPaid = isPaidProduct(product)
 
     return (
         <div className={cx(styles.root, styles.Editor)}>
@@ -42,7 +43,9 @@ const Editor = ({ disabled }: Props) => {
                         <ProductStreams disabled={disabled} />
                         <PriceSelector disabled={disabled} />
                         <ProductDetails disabled={disabled} />
-                        <Whitelist disabled={disabled} />
+                        {!!isPaid && (
+                            <Whitelist disabled={disabled} />
+                        )}
                         <ConnectEthIdentity disabled={disabled} />
                         {!!isDataUnion && (
                             <SharedSecrets disabled={disabled} />
