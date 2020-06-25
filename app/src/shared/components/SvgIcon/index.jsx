@@ -5,6 +5,7 @@ import React, { type ComponentType } from 'react'
 import UploadIcon from './ImageUploadIcon'
 import CheckmarkIcon from './CheckmarkIcon'
 import * as MapIcons from './MapIcons'
+import * as SocialIcons from './SocialIcons'
 import styles from './svgIcon.pcss'
 
 /* eslint-disable max-len */
@@ -603,6 +604,33 @@ const sources = {
                 </g>
             </g>
         </svg>
+    ),
+    github: (
+        <SocialIcons.GitHub />
+    ),
+    medium: (
+        <SocialIcons.Medium />
+    ),
+    peepeth: (
+        <SocialIcons.Peepeth />
+    ),
+    reddit: (
+        <SocialIcons.Reddit />
+    ),
+    telegram: (
+        <SocialIcons.Telegram />
+    ),
+    trello: (
+        <SocialIcons.Trello />
+    ),
+    twitter: (
+        <SocialIcons.Twitter />
+    ),
+    youtube: (
+        <SocialIcons.Youtube />
+    ),
+    linkedin: (
+        <SocialIcons.LinkedIn />
     ),
 }
 
